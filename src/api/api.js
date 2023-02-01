@@ -14,3 +14,9 @@ export async function createToDo({ title, body }) {
     })
     console.log(response);
 }
+
+export async function deleteAllToDo() {
+    const response = await axios.delete(baseURL)
+    console.log(response.data);
+    return response.data;
+}
