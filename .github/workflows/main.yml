@@ -27,7 +27,7 @@ jobs:
         run: npm i -g @railway/cli
 
       - name: Deploy
-        run: railway up
+        run: railway up -s tf_isw3_frontend
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
           VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
