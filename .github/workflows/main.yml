@@ -23,9 +23,6 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Build
-        run: npm run build
-        
       - name: Install Railway
         run: npm i -g @railway/cli
 
@@ -33,4 +30,4 @@ jobs:
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          MONGO_URL: ${{ secrets.MONGO_URL }}
+          VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
