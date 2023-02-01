@@ -14,19 +14,19 @@ export default function ToDoList() {
 
   if (isLoading) {
     return <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <CircularProgress color="secondary" sx={{ display: 'flex', justifyContent: 'center' }} />
+      <CircularProgress id="todolist-progress" color="secondary" sx={{ display: 'flex', justifyContent: 'center' }} />
     </div>
 
   }
 
-if (error) {
-  return <Alert severity="error" id="todolist-error-alert">An error occured while attempting to fetch the todo list. Make sure the database is up an running.</Alert>
-}
+  if (error) {
+    return <Alert severity="error" id="todolist-error-alert">An error occured while attempting to fetch the todo list. Make sure the database is up an running.</Alert>
+  }
 
   return (
-    <List>
+    <List id="todolist-list">
       {data.map((todo) =>
-        <ListItem key={todo._id}>
+        <ListItem key={todo._id} id={"todolist-item-" + todo._id}>
           <ToDoCard title={todo.title} body={todo.body}></ToDoCard>
         </ListItem>
       )}
