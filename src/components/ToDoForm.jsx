@@ -1,25 +1,34 @@
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import * as React from 'react';
 import { createToDo } from '../api/api.js';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import * as React from 'react';
 
 export default function ToDoForm() {
+    const queryClient = useQueryClient()
+
+    const mutation = useMutation({
+        mutationFn: createToDo,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['todos'] })
+        }
+    });
 
     const [title, setTitle] = React.useState("");
     const [body, setBody] = React.useState("");
 
     function handleTitle(e) {
-        setTitle(e.target.value)
+        setTitle(e.target.value);
     }
 
     function handleBody(e) {
-        setBody(e.target.value)
+        setBody(e.target.value);
     }
 
     function handleSubmit(e) {
-        e.preventDefault()
-        createToDo({ title, body });
+        e.preventDefault();
+        mutation.mutate({ title, body });
     }
 
     return (

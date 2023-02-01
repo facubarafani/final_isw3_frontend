@@ -5,7 +5,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Stack from '@mui/material/Stack';
 import ToDoList from './components/ToDoList';
 import React from "react";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
+const queryClient = new QueryClient()
 
 const darkTheme = createTheme({
   palette: {
@@ -15,15 +20,17 @@ const darkTheme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <div className="App">
-        <Stack>
-          <ToDoForm />
-          <ToDoList />
-        </Stack>
-      </div>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <div className="App">
+          <Stack>
+            <ToDoForm />
+            <ToDoList />
+          </Stack>
+        </div>
+      </ThemeProvider>
+    </QueryClientProvider>
   )
 }
 

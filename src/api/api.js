@@ -2,18 +2,15 @@ import axios from 'axios';
 
 const baseURL = "http://localhost:8082/api/todo";
 
-export function fetchAllTodos() {
-    const todos = axios.get(baseURL)
-        .then((response) => response.data)
-    return todos;
+export async function fetchAllTodos() {
+    const response = await axios.get(baseURL)
+    return response.data;
 }
 
-export function createToDo({ title, body }) {
-    axios.post(baseURL, {
+export async function createToDo({ title, body }) {
+    const response = await axios.post(baseURL, {
         title: title,
         body: body
     })
-        .then(function (response) {
-            console.log(response);
-        })
+    console.log(response);
 }
