@@ -6,8 +6,8 @@ import * as React from 'react';
 
 export default function ToDoCard({ title, body }) {
     return (
-        <Box sx={{width: 1}}>
-            <Card variant="outlined">
+        <Box sx={{ width: 1 }}>
+            <Card variant="outlined" sx={{ backgroundColor: '#393a41' }}>
                 <CardHeader title={title} />
                 <CardContent>
                     {body}

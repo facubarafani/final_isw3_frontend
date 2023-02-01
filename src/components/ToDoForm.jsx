@@ -11,6 +11,8 @@ export default function ToDoForm() {
     const queryClient = useQueryClient();
 
     const [open, setOpen] = React.useState(false);
+    const [deleteData, setDeleteData] = React.useState("");
+
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
@@ -27,8 +29,10 @@ export default function ToDoForm() {
 
     const deleteMutation = useMutation({
         mutationFn: deleteAllToDo,
-        onSuccess: () => {
+        onSuccess: (data) => {
             queryClient.invalidateQueries({ queryKey: ['todos'] });
+            setOpen(true);
+            setDeleteData(data.message);
         }
     });
 
@@ -55,20 +59,20 @@ export default function ToDoForm() {
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
             <Stack spacing={2}>
-                <TextField id="title-textfield" label="Title" variant="outlined" placeholder="Insert a title" onChange={(e) => handleTitle(e)} value={title} />
-                <TextField id="body-textfield" label="Body" variant="outlined" placeholder="Insert a body" onChange={(e) => handleBody(e)} value={body} />
+                <TextField id="todolist-title-textfield" label="Title" variant="outlined" placeholder="Insert a title" onChange={(e) => handleTitle(e)} value={title} />
+                <TextField id="todolist-body-textfield" label="Body" variant="outlined" placeholder="Insert a body" onChange={(e) => handleBody(e)} value={body} />
                 <Stack direction="row" justifyContent="flex-end" spacing={2}>
-                    <Button variant="contained" type="submit">
+                    <Button id="todolist-create-button" variant="contained" type="submit">
                         Create
                     </Button>
-                    <Button variant="contained" color="error" onClick={handleDelete}>
+                    <Button id="todolist-deleteall-button" variant="contained" color="error" onClick={handleDelete}>
                         DELETE ALL
                     </Button>
                 </Stack>
                 {deleteMutation.isSuccess &&
-                    <Snackbar open={!open}autoHideDuration={5000} onClose={ handleClose } >
-                        <Alert severity="error" sx={{ width: '100%' }}>
-                            pROBAMDO
+                    <Snackbar id="todolist-delete-snackbar" open={open} autoHideDuration={5000} onClose={handleClose} sx={{ width: '100%' }}>
+                        <Alert severity="info" >
+                            {deleteData}
                         </Alert>
                     </Snackbar>}
             </Stack>

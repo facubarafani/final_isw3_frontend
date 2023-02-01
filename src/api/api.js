@@ -12,7 +12,6 @@ export async function createToDo({ title, body }) {
         title: title,
         body: body
     })
-    console.log(response);
 }
 
 export async function deleteAllToDo() {
