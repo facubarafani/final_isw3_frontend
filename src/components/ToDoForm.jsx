@@ -1,11 +1,12 @@
+import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert'
-import { createToDo, deleteAllToDo } from '../api/api.js';
+import Divider from '@mui/material/Divider';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import * as React from 'react';
+import { createToDo, deleteAllToDo } from '../api/api.js';
 
 export default function ToDoForm() {
     const queryClient = useQueryClient();
@@ -75,6 +76,7 @@ export default function ToDoForm() {
                             {deleteData}
                         </Alert>
                     </Snackbar>}
+                <Divider />
             </Stack>
         </form>
     );

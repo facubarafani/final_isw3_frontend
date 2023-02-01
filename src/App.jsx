@@ -24,7 +24,7 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         <div className="App">
-          <Stack>
+          <Stack spacing={2}>
             <ToDoForm />
             <ToDoList />
           </Stack>
