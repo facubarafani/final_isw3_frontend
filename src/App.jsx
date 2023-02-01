@@ -1,9 +1,11 @@
-import './App.css'
-import ToDoCard from './components/ToDoCard'
-import ToDoTextBox from './components/ToDoTextBox'
+import './App.css';
+import ToDoForm from './components/ToDoForm';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Stack from '@mui/material/Stack';
+import ToDoList from './components/ToDoList';
+import React from "react";
+
 
 const darkTheme = createTheme({
   palette: {
@@ -16,9 +18,9 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <div className="App">
-        <Stack spacing={2}>
-          <ToDoTextBox />
-          <ToDoCard />
+        <Stack>
+          <ToDoForm />
+          <ToDoList />
         </Stack>
       </div>
     </ThemeProvider>
