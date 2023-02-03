@@ -20,15 +20,15 @@ jobs:
       - name: Install packages
         run: npm ci
 
-      # - name: Run tests
-      #   run: npm test
+      - name: Run tests
+        run: npm test
       # define job to build and publish docker image
 
       - name: Archive react app dist
         uses: actions/upload-artifact@v3
         with:
-          name: frontend_dist
-          path: dist
+          name: test-coverage-report
+          path: coverage/index.html
 
   build-and-push-docker-image:
     name: Build Docker image and push to repositories
