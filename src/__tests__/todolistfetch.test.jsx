@@ -17,8 +17,8 @@ describe('Server error', () => {
   })
 
   it('', async () => {
-    // test('Handles todo items counter', async () => {
     const { fetchAllTodos } = await import('../api/api');
+
     render(
       <QueryClientProvider client={queryClient}>
         <ToDoList />
@@ -29,10 +29,10 @@ describe('Server error', () => {
       return screen.findAllByRole('todo-item');
     });
 
-    console.log(todo_list.length);
+    const counter = await waitFor(() => {
+      return screen.findByRole('counter')
+    });
 
-    await waitFor(() => {
-      expect(screen.getByRole('counter')).toHaveTextContent(todo_list.length);
-    })
+    expect(counter).toHaveTextContent(todo_list.length);
   });
 });
