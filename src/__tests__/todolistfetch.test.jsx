@@ -24,6 +24,10 @@ describe('Server error', () => {
       </QueryClientProvider>
     )
 
+    waitFor(() => {
+      screen.getByRole('loading');
+    })
+    
     const todo_list = await waitFor(() => {
       return screen.findAllByRole('todo-item');
     });
