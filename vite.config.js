@@ -20,6 +20,7 @@ export default defineConfig({
       provider: 'istanbul',
       reporter: ['json', 'html', 'text']
     },
-    reporters: ['default', 'html']
+    reporters: ['default', 'html'],
+    testTimeout: 10000,
   },
 })

@@ -17,7 +17,6 @@ describe('Server error', () => {
   })
 
   it('', async () => {
-    const { fetchAllTodos } = await import('../api/api');
 
     render(
       <QueryClientProvider client={queryClient}>
@@ -34,5 +33,5 @@ describe('Server error', () => {
     });
 
     expect(counter).toHaveTextContent(todo_list.length);
-  }, 10000);
+  });
 });
