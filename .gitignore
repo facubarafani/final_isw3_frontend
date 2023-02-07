@@ -23,6 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
+html
+
 .DS_STORE
 node_modules
 scripts/flow/*/.flowconfig

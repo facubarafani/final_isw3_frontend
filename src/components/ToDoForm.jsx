@@ -50,7 +50,7 @@ export default function ToDoForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        mutation.mutate({ title, body });
+        mutation.mutate({ title: 'pepe', body });
     }
 
     function handleDelete() {
@@ -60,10 +60,10 @@ export default function ToDoForm() {
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
             <Stack spacing={2}>
-                <TextField id="todolist-title-textfield" label="Title" variant="outlined" placeholder="Insert a title" onChange={(e) => handleTitle(e)} value={title} />
-                <TextField id="todolist-body-textfield" label="Body" variant="outlined" placeholder="Insert a body" onChange={(e) => handleBody(e)} value={body} />
+                <TextField inputProps={{ "data-testid": "title-textfield" }} role="title-textfield" id="todolist-title-textfield" label="Title" variant="outlined" placeholder="Insert a title" onChange={(e) => handleTitle(e)} value={title} />
+                <TextField inputProps={{ "data-testid": "body-textfield" }} role="body-textfield" id="todolist-body-textfield" label="Body" variant="outlined" placeholder="Insert a body" onChange={(e) => handleBody(e)} value={body} />
                 <Stack direction="row" justifyContent="flex-end" spacing={2}>
-                    <Button id="todolist-create-button" variant="contained" type="submit">
+                    <Button data-testid="create-button" role="create-button" id="todolist-create-button" variant="contained" type="submit">
                         Create
                     </Button>
                     <Button id="todolist-deleteall-button" variant="contained" color="error" onClick={handleDelete}>

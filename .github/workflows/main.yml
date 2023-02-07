@@ -22,9 +22,14 @@ jobs:
 
       - name: Run tests
         run: npm test
-      # define job to build and publish docker image
 
-      - name: Archive react app dist
+      - name: Archive test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: html/index.html
+
+      - name: Archive test coverage
         uses: actions/upload-artifact@v3
         with:
           name: test-coverage-report

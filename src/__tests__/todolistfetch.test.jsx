@@ -17,24 +17,22 @@ describe('Server error', () => {
   })
 
   it('', async () => {
+    // test('Handles todo items counter', async () => {
     const { fetchAllTodos } = await import('../api/api');
-    vi.mock('../api/api');
-    // test('Handles server error', async () => {
-    fetchAllTodos.mockRejectedValueOnce(new Error('Async error'))
-
     render(
       <QueryClientProvider client={queryClient}>
         <ToDoList />
       </QueryClientProvider>
     )
 
-    await waitFor(() => {
-      expect(screen.findByRole('alert'));
+    const todo_list = await waitFor(() => {
+      return screen.findAllByRole('todo-item');
     });
 
+    console.log(todo_list.length);
+
     await waitFor(() => {
-      expect(screen.findByText('An error occured while attempting to fetch the todo list. Make sure the database is up an running.'));
+      expect(screen.getByRole('counter')).toHaveTextContent(todo_list.length);
     })
-    // });
   });
 });
