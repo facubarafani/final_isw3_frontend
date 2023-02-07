@@ -26,7 +26,7 @@ describe('Server error', () => {
     )
 
     const todo_list = await waitFor(() => {
-      return screen.findAllByRole('todo-item', { timeout: 8000 });
+      return screen.findAllByRole('todo-item');
     });
 
     const counter = await waitFor(() => {
@@ -34,5 +34,5 @@ describe('Server error', () => {
     });
 
     expect(counter).toHaveTextContent(todo_list.length);
-  });
+  }, 10000);
 });
