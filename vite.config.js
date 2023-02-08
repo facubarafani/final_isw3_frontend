@@ -21,5 +21,6 @@ export default defineConfig({
       reporter: ['json', 'html', 'text']
     },
     reporters: ['default', 'html'],
+    testTimeout: 10000,
   },
 })
