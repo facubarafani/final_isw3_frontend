@@ -21,6 +21,8 @@ jobs:
         run: npm ci
 
       - name: Run tests
+        env: # Or as an environment variable
+         VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
         run: npm test
 
       - name: Archive test report
