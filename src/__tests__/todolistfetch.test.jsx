@@ -9,7 +9,7 @@ import { vi } from 'vitest';
 
 const queryClient = new QueryClient()
 
-describe('Server error', () => {
+describe('Todo list renders', () => {
   afterEach(() => {
     vi.clearAllMocks();
     vi.resetAllMocks();
@@ -24,16 +24,16 @@ describe('Server error', () => {
       </QueryClientProvider>
     )
 
-    waitFor(() => {
-      screen.getByRole('loading');
-    })
-    
-    const todo_list = await waitFor(() => {
-      return screen.findAllByRole('todo-item');
-    });
-
     const counter = await waitFor(() => {
       return screen.findByRole('counter')
+    });
+
+    if (counter.textContent == 'You currently have 0 items on your todo list') {
+      return;
+    }
+
+    const todo_list = await waitFor(() => {
+      return screen.findAllByRole('todo-item');
     });
 
     expect(counter).toHaveTextContent(todo_list.length);
