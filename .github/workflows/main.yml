@@ -22,7 +22,7 @@ jobs:
 
       - name: Run tests
         env: # Or as an environment variable
-         VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
+          VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
         run: npm test
 
       - name: Archive test report
@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test-coverage-report
-          path: coverage/index.html
+          path: coverage/coverage-final.json
 
   build-and-push-docker-image:
     name: Build Docker image and push to repositories

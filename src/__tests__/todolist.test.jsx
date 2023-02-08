@@ -9,7 +9,7 @@ import { vi } from 'vitest';
 
 const queryClient = new QueryClient()
 
-describe('Server error', () => {
+describe('Handles server error', () => {
   afterEach(() => {
     vi.clearAllMocks();
     vi.resetAllMocks();
@@ -19,7 +19,7 @@ describe('Server error', () => {
   it('', async () => {
     const { fetchAllTodos } = await import('../api/api');
     vi.mock('../api/api');
-    // test('Handles server error', async () => {
+
     fetchAllTodos.mockRejectedValueOnce(new Error('Async error'))
 
     render(
@@ -35,6 +35,5 @@ describe('Server error', () => {
     await waitFor(() => {
       expect(screen.findByText('An error occured while attempting to fetch the todo list. Make sure the database is up an running.'));
     })
-    // });
   });
 });

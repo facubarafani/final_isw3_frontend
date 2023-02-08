@@ -9,7 +9,7 @@ import { vi } from 'vitest';
 
 const queryClient = new QueryClient()
 
-describe('Todo list renders', () => {
+describe('Renders todo list', () => {
   afterEach(() => {
     vi.clearAllMocks();
     vi.resetAllMocks();
