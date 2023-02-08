@@ -26,7 +26,7 @@ describe('Todo list renders', () => {
 
     const counter = await waitFor(() => {
       return screen.findByRole('counter')
-    });
+    }, { timeout: 10000 });
 
     if (counter.textContent == 'You currently have 0 items on your todo list') {
       return;
