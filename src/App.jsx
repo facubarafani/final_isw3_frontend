@@ -27,6 +27,7 @@ function App() {
           <Stack spacing={2}>
             <ToDoForm />
             <ToDoList />
+            <h1>Hola probando</h1>
           </Stack>
         </div>
       </ThemeProvider>
