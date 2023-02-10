@@ -25,7 +25,6 @@ function App() {
         <CssBaseline />
         <div className="App">
           <Stack spacing={2}>
-          <h1>Hola probando</h1>
             <ToDoForm />
             <ToDoList />
           </Stack>

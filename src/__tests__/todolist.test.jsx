@@ -29,6 +29,10 @@ describe('Handles server error', () => {
     )
 
     await waitFor(() => {
+      expect(screen.findByRole('prueba'));
+    });
+
+    await waitFor(() => {
       expect(screen.findByRole('alert'));
     });
 

@@ -25,6 +25,7 @@ export default function ToDoList() {
 
   return (
     <Stack spacing={2}>
+      <h1 role="prueba">Hola probando</h1>
       <Chip role="counter" label={<h3>You currently have {data.length} items on your todo list</h3>} />
       <List id="todolist-item">
         {data.map((todo) =>
